@@ -148,6 +148,30 @@ def process_and_chunk_pdfs(df: pd.DataFrame, temp_folder: str, batches_folder: s
 
     # Save the updated DataFrame to the original CSV
     try:
+        root_dir = batches_folder
+        data = []
+
+        # Sort the batch folders in increasing order
+        batch_folders = sorted(
+            [f for f in os.listdir(root_dir) if f.startswith('Batch_')],
+            key=lambda x: int(x.split('_')[1])
+        )
+
+        # Loop through each batch folder
+        for batch in batch_folders:
+            batch_path = os.path.join(root_dir, batch)
+            for file in os.listdir(batch_path):
+                if file.endswith('.pdf'):
+                    file_name = os.path.splitext(file)[0]  # remove .pdf extension
+                    data.append((file_name, batch))
+
+        # Create DataFrame
+        batch_df = pd.DataFrame(data, columns=['file_primary_key', 'batch'])
+
+        # setup the incremental logic for this as batches once made wont be changed
+        output_csv = output_csv.drop(["batch"], axis = 1)
+        output_csv = pd.merge(output_csv, batch_df, how = 'left', on = 'file_primary_key')
+        output_csv.to_csv("/projectnb/sachgrp/apgupta/Case Law Data/combined_cases_metadata.csv", index = False)
         df.to_csv(output_csv, index=False)
         print(f"Updated original DataFrame at {output_csv}")
     except Exception as e:
