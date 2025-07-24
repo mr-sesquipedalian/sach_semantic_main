@@ -15,15 +15,8 @@ from collections import defaultdict
 from langchain.document_loaders import PyMuPDFLoader
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain.vectorstores import FAISS
-#from IPython.display import display, HTML
+from IPython.display import display, HTML
 
-
-'''pd.set_option('display.max_columns', None)
-pd.set_option('display.max_rows', None)
-pd.set_option('display.max_colwidth', None)'''
-
-# sys.argv[1] = Raw file folder like "/projectnb/sachgrp/prathamk/CaseLaw/USA/Massachusetts/" 
-# sys.argv[2] = Output directory path like "/projectnb/sachgrp/apgupta/Case Law Data/USA/Massachusetts"
 
 def combine_jsons_to_dataframe(raw_data_directory: str):
     """
@@ -40,7 +33,7 @@ def combine_jsons_to_dataframe(raw_data_directory: str):
     
     if not test_path.exists() or not test_path.is_dir():
         print(f"Error: Directory {raw_data_directory} does not exist or is not a directory")
-        return pd.DataFrame()
+        #return pd.DataFrame()
     
     # Initialize an empty list to store data from all JSON files
     all_data = []
@@ -87,19 +80,19 @@ def combine_jsons_to_dataframe(raw_data_directory: str):
     
     if not all_data:
         print("No valid JSON data found")
-        return pd.DataFrame()
+        #return pd.DataFrame()
     
     # Create DataFrame from the combined data
     df = pd.DataFrame(all_data)
     print(f"Created DataFrame with {len(df)} rows")
     primary_key = df.pop('file_primary_key')
     df.insert(0, 'file_primary_key', primary_key)
-    df.to_csv(f"/projectnb/sachgrp/apgupta/Case Law Data/cases_metadata_checkpoints/{checkpoint}.csv", index = False)
+    df.to_csv(f"/projectnb/sachgrp/apgupta/Case Law Data/cases_metadata_checkpoints/test_{checkpoint}.csv", index = False)
     print("Checkpoint Saved")
-    df.to_csv("/projectnb/sachgrp/apgupta/Case Law Data/combined_cases_metadata.csv", mode='a', index=False, header=True)
+    df.to_csv("/projectnb/sachgrp/apgupta/Case Law Data/combined_cases_metadata.csv", mode='a', index=False, header = False)
     print("Combined file updated")
-    #return df
+    # return df
 
-if __name__ == "main":
-    # raw_data_directory = "/projectnb/sachgrp/prathamk/CaseLaw/USA/Massachusetts/"
+if __name__ == "__main__":
+    #raw_data_directory = "/projectnb/sachgrp/prathamk/CaseLaw/USA/Maine/"
     combine_jsons_to_dataframe(sys.argv[1])
