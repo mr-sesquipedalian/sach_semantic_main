@@ -86,7 +86,7 @@ def combine_jsons_to_dataframe(raw_data_directory: str):
     print(f"Created DataFrame with {len(df)} rows")
     primary_key = df.pop('file_primary_key')
     df.insert(0, 'file_primary_key', primary_key)
-    df.to_csv(f"/projectnb/sachgrp/apgupta/Case Law Data/cases_metadata_checkpoints/test_{checkpoint}.csv", index = False)
+    df.to_csv(f"/projectnb/sachgrp/apgupta/Case Law Data/cases_metadata_checkpoints/{checkpoint}.csv", index = False)
     print("Checkpoint Saved")
     df.to_csv("/projectnb/sachgrp/apgupta/Case Law Data/combined_cases_metadata.csv", mode='a', index=False, header = False)
     print("Combined file updated")
