@@ -1,0 +1,17 @@
+#!/bin/bash -l
+
+#$ -P sachgrp
+#$ -l h_rt=60:00:00
+#$ -N vectorDb_arbitration_case_all_full_creation_2_gpu
+#$ -m bea
+#$ -pe omp 8
+#$ -l gpus=2
+#$ -l gpu_c=8.0
+
+export PYTHONUNBUFFERED=1
+
+module load cuda/12.5
+module load miniconda
+conda activate sach_vdb_env
+
+python job_5_vdb_creation.py

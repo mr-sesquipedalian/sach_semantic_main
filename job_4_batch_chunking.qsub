@@ -1,0 +1,14 @@
+#!/bin/bash -l
+
+#$ -t 1-800
+#$ -P sachgrp
+#$ -l h_rt=96:00:00
+#$ -N batch_semantic_chunker
+#$ -m bea
+#$ -pe omp 1
+
+export PYTHONUNBUFFERED=1
+module load miniconda
+conda activate sach2
+
+python job_4_batch_chunking.py
