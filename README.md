@@ -1,4 +1,4 @@
-# SACH (Sourcing accurate cases without Hallucinations) 
+# Sourcing Accurate Cases without Hallucinations (SACH/सच)
 
 ## Data pipeline from raw source to trained vector databases
 
