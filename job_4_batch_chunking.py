@@ -6,6 +6,7 @@ from langchain.document_loaders import PyMuPDFLoader
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_core.runnables.config import ContextThreadPoolExecutor
+from concurrent.futures import ThreadPoolExecutor
 import time
 from itertools import islice
 import pickle
@@ -59,11 +60,13 @@ device = "cuda" if torch.cuda.is_available() else "cpu"
 nthreads = int(os.getenv("NSLOTS"))
 embed_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5", device=device, threads=nthreads)
 
+k = 500 # figure out a way to get this value from the job_3 code
 sge_task_id = os.getenv('SGE_TASK_ID')
+batch_number = int(sge_task_id) + k
 
-batch_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches/Batch_" + sge_task_id # put the right batch path here
+batch_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches/Batch_" + batch_number # Recheck the logic with sir once so that we can 
 documents = load_and_clean_documents(batch_folder)
-print(f"Loaded {len(documents)} pages Batch_{sge_task_id}")
+print(f"Loaded {len(documents)} pages Batch_{batch_number}")
 
 start_time = time.time()
 semantic_chunker = SemanticChunker(embed_model, breakpoint_threshold_type="percentile")
@@ -73,5 +76,5 @@ end_time = time.time()
 runtime = (end_time - start_time) / 3600
 print(f"Semantic chunking completed in {runtime} hours.")
 
-with open(os.path.join("/projectnb/sachgrp/apgupta/Case Law Data/chunked_pickle_files", f"test_{sge_task_id}.pkl"), "wb") as file:
+with open(os.path.join("/projectnb/sachgrp/apgupta/Case Law Data/chunked_pickle_files", f"test_{batch_number}.pkl"), "wb") as file:
     pickle.dump(semantic_chunks, file)
