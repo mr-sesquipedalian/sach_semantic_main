@@ -53,4 +53,4 @@ def count_pdfs_in_folders(test_dir: str):
 # Example usage
 if __name__ == "__main__":
     #test_directory = "/projectnb/sachgrp/apgupta/Case Law Data/USA/Massachusetts"   # Pass the path for which you want to calculate the number of PDFs
-    count_pdfs_in_folders(sys.argv[2])
+    count_pdfs_in_folders(sys.argv[1])

@@ -79,9 +79,6 @@ def process_and_chunk_pdfs(df: pd.DataFrame, temp_folder: str, batches_folder: s
         batches_folder (str): Folder to store batch folders.
         output_csv (str): Path to the original CSV to update.
         bucket_num (int): Number of buckets for distribution.
-
-    Returns:
-        pd.DataFrame: Updated DataFrame.
     """
     # Ensure temporary and batches folders exist
     os.makedirs(temp_folder, exist_ok=True)
@@ -167,7 +164,7 @@ def process_and_chunk_pdfs(df: pd.DataFrame, temp_folder: str, batches_folder: s
     except Exception as e:
         print(f"Error saving DataFrame to {output_csv}: {str(e)}")
 
-    return df
+    #return df
 
 # Example usage
 if __name__ == "__main__":
@@ -183,4 +180,4 @@ if __name__ == "__main__":
     batches_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches"
     output_csv ="/projectnb/sachgrp/apgupta/Case Law Data/combined_cases_metadata.csv"  
     
-    #updated_df = process_and_chunk_pdfs(df, temp_folder, batches_folder, output_csv, bucket_num=500)
+    process_and_chunk_pdfs(df, temp_folder, batches_folder, output_csv, bucket_num=500)

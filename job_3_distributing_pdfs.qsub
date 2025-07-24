@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 #$ -P sachgrp
-#$ -N job_1_split_pdf_from_raw_source
+#$ -N job_3_distributing_pdfs
 #$ -m bea
 #$ -pe omp 16
 
@@ -10,5 +10,4 @@ export PYTHONUNBUFFERED=1
 module load miniconda
 conda activate /projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_env
 
-# Just change the state name and the country name in the input variable for this
-python3 job_3_distributing_pdfs.py "/projectnb/sachgrp/prathamk/CaseLaw/USA/Maine/" "/projectnb/sachgrp/apgupta/Case Law Data/USA/Maine"
+python3 job_3_distributing_pdfs.py

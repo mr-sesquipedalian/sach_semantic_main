@@ -101,5 +101,5 @@ def combine_jsons_to_dataframe(raw_data_directory: str):
     #return df
 
 if __name__ == "main":
-    raw_data_directory = "/projectnb/sachgrp/prathamk/CaseLaw/USA/Massachusetts/"
+    # raw_data_directory = "/projectnb/sachgrp/prathamk/CaseLaw/USA/Massachusetts/"
     combine_jsons_to_dataframe(sys.argv[1])

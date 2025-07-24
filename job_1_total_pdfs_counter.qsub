@@ -1,7 +1,7 @@
 #!/bin/bash -l
 
 #$ -P sachgrp
-#$ -N job_1_split_pdf_from_raw_source
+#$ -N job_1_total_pdfs_counter
 #$ -m bea
 #$ -pe omp 16
 
