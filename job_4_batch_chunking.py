@@ -6,7 +6,6 @@ from langchain.document_loaders import PyMuPDFLoader
 from langchain_experimental.text_splitter import SemanticChunker
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain_core.runnables.config import ContextThreadPoolExecutor
-from concurrent.futures import ThreadPoolExecutor
 import time
 from itertools import islice
 import pickle

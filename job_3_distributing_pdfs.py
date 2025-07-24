@@ -1,21 +1,10 @@
 import os
-import json
 import pandas as pd
-import time
-import uuid
 import shutil
-import torch
-import pickle
-import fitz 
-import sys
-from pathlib import Path
-from PyPDF2 import PdfReader, PdfWriter
-from typing import List, Tuple, Optional
+from typing import List
 from collections import defaultdict
 from langchain.document_loaders import PyMuPDFLoader
-from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
-from langchain.vectorstores import FAISS
-#from IPython.display import display, HTML
+
 
 
 '''pd.set_option('display.max_columns', None)
@@ -179,5 +168,5 @@ if __name__ == "__main__":
     temp_folder = "/projectnb/sachgrp/apgupta/Case Law Data/temp_pdfs"
     batches_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches"
     output_csv ="/projectnb/sachgrp/apgupta/Case Law Data/combined_cases_metadata.csv"  
-    
+
     process_and_chunk_pdfs(df, temp_folder, batches_folder, output_csv, bucket_num=500)
