@@ -15,7 +15,6 @@ from collections import defaultdict
 from langchain.document_loaders import PyMuPDFLoader
 from langchain_community.embeddings.fastembed import FastEmbedEmbeddings
 from langchain.vectorstores import FAISS
-from IPython.display import display, HTML
 
 
 def combine_jsons_to_dataframe(raw_data_directory: str):
