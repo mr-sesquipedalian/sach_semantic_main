@@ -14,4 +14,4 @@ module load cuda/12.5
 module load miniconda
 conda activate sach_vdb_env
 
-python job_5_vdb_creation.py
+python "Python Scripts/job_5_vdb_creation.py"
