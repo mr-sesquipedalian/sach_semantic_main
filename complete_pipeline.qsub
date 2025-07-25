@@ -1,0 +1,6 @@
+qsub -N job1 job_1_split_pdfs_from_raw_source.qsub
+qsub -N job2 -hold_jid job1 job_1_total_pdfs_counter.qsub
+qsub -N job3 -hold_jid job2 job_2_case_laws_metadata
+qsub -N job4 -hold_jid job3 job_3_distributing_pdfs.qsub
+qsub -N job5 -hold_jid job4 job_4_batch_chunking.qsub
+qsub -N job6 -hold_jid job5 job_5_vdb_creation.qsub
