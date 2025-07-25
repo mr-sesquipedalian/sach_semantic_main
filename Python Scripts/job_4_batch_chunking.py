@@ -57,7 +57,7 @@ def process_documents(documents, max_workers, batch_size=50):
 
 # Initialize embedding model and SemanticChunker
 
-if __name__ == "main":
+if __name__ == "__main__":
     device = "cuda" if torch.cuda.is_available() else "cpu"
     nthreads = int(os.getenv("NSLOTS"))
     embed_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5", device=device, threads=nthreads)
