@@ -56,25 +56,27 @@ def process_documents(documents, max_workers, batch_size=50):
     return semantic_chunks
 
 # Initialize embedding model and SemanticChunker
-device = "cuda" if torch.cuda.is_available() else "cpu"
-nthreads = int(os.getenv("NSLOTS"))
-embed_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5", device=device, threads=nthreads)
 
-k = 500 # figure out a way to get this value from the job_3 code
-sge_task_id = os.getenv('SGE_TASK_ID')
-batch_number = int(sge_task_id) + k
+if __name__ == "main":
+    device = "cuda" if torch.cuda.is_available() else "cpu"
+    nthreads = int(os.getenv("NSLOTS"))
+    embed_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5", device=device, threads=nthreads)
 
-batch_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches/Batch_" + batch_number # Recheck the logic with sir once so that we can 
-documents = load_and_clean_documents(batch_folder)
-print(f"Loaded {len(documents)} pages Batch_{batch_number}")
+    k = 500 # figure out a way to get this value from the job_3 code
+    sge_task_id = os.getenv('SGE_TASK_ID')
+    batch_number = int(sge_task_id) + k
 
-start_time = time.time()
-semantic_chunker = SemanticChunker(embed_model, breakpoint_threshold_type="percentile")
-semantic_chunks = process_documents(documents, nthreads)
+    batch_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches/Batch_" + batch_number # Recheck the logic with sir once so that we can 
+    documents = load_and_clean_documents(batch_folder)
+    print(f"Loaded {len(documents)} pages Batch_{batch_number}")
 
-end_time = time.time()
-runtime = (end_time - start_time) / 3600
-print(f"Semantic chunking completed in {runtime} hours.")
+    start_time = time.time()
+    semantic_chunker = SemanticChunker(embed_model, breakpoint_threshold_type="percentile")
+    semantic_chunks = process_documents(documents, nthreads)
 
-with open(os.path.join("/projectnb/sachgrp/apgupta/Case Law Data/chunked_pickle_files", f"test_{batch_number}.pkl"), "wb") as file:
-    pickle.dump(semantic_chunks, file)
+    end_time = time.time()
+    runtime = (end_time - start_time) / 3600
+    print(f"Semantic chunking completed in {runtime} hours.")
+
+    with open(os.path.join("/projectnb/sachgrp/apgupta/Case Law Data/chunked_pickle_files", f"test_{batch_number}.pkl"), "wb") as file:
+        pickle.dump(semantic_chunks, file)
