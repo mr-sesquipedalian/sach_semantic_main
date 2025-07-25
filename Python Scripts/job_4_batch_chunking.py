@@ -66,7 +66,7 @@ if __name__ == "__main__":
     sge_task_id = os.getenv('SGE_TASK_ID')
     batch_number = int(sge_task_id) + k
 
-    batch_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches/Batch_" + batch_number # Recheck the logic with sir once so that we can 
+    batch_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches/Batch_" + str(batch_number) # Recheck the logic with sir once so that we can 
     documents = load_and_clean_documents(batch_folder)
     print(f"Loaded {len(documents)} pages Batch_{batch_number}")
 
