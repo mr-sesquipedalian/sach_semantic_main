@@ -1,8 +1,8 @@
 #!/bin/bash -l
 
-#$ -t 1-800
+#$ -t 1-500
 #$ -P sachgrp
-#$ -l h_rt=96:00:00
+#$ -l h_rt=48:00:00
 #$ -N batch_semantic_chunker
 #$ -m bea
 #$ -pe omp 1
