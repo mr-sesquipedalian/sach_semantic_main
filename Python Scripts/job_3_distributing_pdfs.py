@@ -120,7 +120,7 @@ def process_and_chunk_pdfs(df: pd.DataFrame, temp_folder: str, batches_folder: s
 
     # Save initial k
     with open("initial_k.txt", "w") as f:
-        f.write(k)
+        f.write(str(k))
 
     # Process each bucket and update chunking_folder
     for i, bucket in buckets.items():
