@@ -9,7 +9,6 @@ export PYTHONUNBUFFERED=1
 
 module load miniconda
 conda activate /projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_env
-cd ..
 
 # Just change the state name and the country name in the input variable for this
 python3 "Python Scripts/job_1_total_pdfs_counter.py" "/projectnb/sachgrp/apgupta/Case Law Data/USA/Maine"

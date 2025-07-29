@@ -10,6 +10,5 @@
 export PYTHONUNBUFFERED=1
 module load miniconda
 conda activate sach2
-cd ..
 
 python "Python Scripts/job_4_batch_chunking.py"
