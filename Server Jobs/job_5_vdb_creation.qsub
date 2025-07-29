@@ -15,4 +15,4 @@ module load miniconda
 conda activate sach_vdb_env
 
 
-python "sach_semantic_main/Python Scripts/job_5_vdb_creation.py"
+python "Python Scripts/job_5_vdb_creation.py"
