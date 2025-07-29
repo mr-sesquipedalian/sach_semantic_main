@@ -62,7 +62,7 @@ if __name__ == "__main__":
     nthreads = int(os.getenv("NSLOTS"))
     embed_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5", device=device, threads=nthreads)
 
-    k = 500 # figure out a way to get this value from the job_3 code
+    k = 1000 # figure out a way to get this value from the job_3 code
     sge_task_id = os.getenv('SGE_TASK_ID')
     batch_number = int(sge_task_id) + k
 
