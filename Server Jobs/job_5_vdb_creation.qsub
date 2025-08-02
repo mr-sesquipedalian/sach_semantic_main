@@ -10,7 +10,7 @@
 
 export PYTHONUNBUFFERED=1
 
-module load cuda/12.5
+module load cuda/12.8
 module load miniconda
 conda activate sach_vdb_env
 
