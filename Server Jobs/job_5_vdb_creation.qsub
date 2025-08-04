@@ -7,6 +7,7 @@
 #$ -pe omp 8
 #$ -l gpus=1
 #$ -l gpu_c=8.0
+#$ -l gpu_memory=25G
 
 export PYTHONUNBUFFERED=1
 
