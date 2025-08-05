@@ -27,16 +27,6 @@ def setup_environment():
 def combine_pickle_files(folder_path):
     combined_data = []
     batch_num_list = []
-    
-    for filename in os.listdir(folder_path):
-        if filename.endswith('.pkl'):
-            file_path = os.path.join(folder_path, filename)
-            with open(file_path, 'rb') as f:
-                data = pickle.load(f)
-                combined_data.extend(data)
-                
-            t = filename.replace(".pkl", "").split("_")
-            batch_num_list.append(int(t[-1]))
 
     start_batch = int()
 
@@ -44,8 +34,25 @@ def combine_pickle_files(folder_path):
         start_batch = int(f.read())
 
     start_batch += 1
-    end_batch = max(batch_num_list)
-    
+    end_batch = start_batch + 499
+
+    folder_path = "/projectnb/sachgrp/apgupta/Case Law Data/chunked_pickle_files"
+    for filename in os.listdir(folder_path):
+        if filename.endswith('.pkl'):
+            # Extract batch number from filename (e.g., test_1.pkl -> 1)
+            try:
+                batch_num = int(filename.replace(".pkl", "").split("_")[-1])
+                # Check if batch number is within the specified range
+                if start_batch <= batch_num <= end_batch:
+                    file_path = os.path.join(folder_path, filename)
+                    with open(file_path, 'rb') as f:
+                        data = pickle.load(f)
+                        combined_data.extend(data)
+                    batch_num_list.append(batch_num)
+            except (ValueError, IndexError):
+                # Skip files that don't match the expected naming pattern
+                continue
+
     output_file = f"/projectnb/sachgrp/apgupta/Case Law Data/combined_chunking_files/all_cases_combined_batch_{start_batch}_batch_{end_batch}.pkl"  
     # put the final chunked file for PDFs 
     with open(output_file, 'wb') as f:
@@ -54,7 +61,7 @@ def combine_pickle_files(folder_path):
     with open(output_file, 'wb') as f:
         pickle.dump(combined_data, f)
 
-    print(f"Combined {len(os.listdir(folder_path))} pickle files into {output_file}")
+    print(f"Combined {len(batch_num_list)} pickle files into {output_file}")
     print(f"Total items in combined list: {len(combined_data)}")
     print(start_batch, end_batch)
     return output_file, start_batch, end_batch
