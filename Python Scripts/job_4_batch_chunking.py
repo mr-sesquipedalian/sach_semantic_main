@@ -62,8 +62,8 @@ if __name__ == "__main__":
     nthreads = int(os.getenv("NSLOTS"))
     embed_model = FastEmbedEmbeddings(model_name="BAAI/bge-base-en-v1.5", device=device, threads=nthreads)
 
-    # figure out a way to get this value from the job_3 code
-    with open("initial_k.txt", "r") as f:
+    # value of the starting batch that is chunked
+    with open("/projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_main/initial_k.txt", "r") as f:   
         k = int(f.read())
     
     sge_task_id = os.getenv('SGE_TASK_ID')

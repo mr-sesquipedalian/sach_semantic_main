@@ -38,7 +38,11 @@ def combine_pickle_files(folder_path):
             t = filename.replace(".pkl", "").split("_")
             batch_num_list.append(int(t[-1]))
 
-    start_batch = min(batch_num_list)
+    start_batch = int()
+
+    with open("/projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_main/initial_k.txt", "r") as f:   
+        start_batch = int(f.read())
+        
     end_batch = max(batch_num_list)
     
     output_file = f"/projectnb/sachgrp/apgupta/Case Law Data/combined_chunking_files/all_cases_combined_batch_{start_batch}_batch_{end_batch}.pkl"  
