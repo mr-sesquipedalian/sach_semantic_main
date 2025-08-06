@@ -14,7 +14,7 @@ def merge_vector_database():
     with open ("/projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_main/latest_incremental.txt", "r") as f:
         latest_vdb_path = f.read()
         
-    faiss_path_incremental = faiss.read_index(os.path.join(latest_vdb_path, "index.pkl"))
+    faiss_path_incremental = faiss.read_index(os.path.join(latest_vdb_path, "index.faiss"))
     with open(os.path.join(latest_vdb_path, "index.pkl"), "rb") as f:
         pkl_path_incremental = pickle.load(f)
     
