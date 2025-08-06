@@ -119,7 +119,7 @@ def process_and_chunk_pdfs(df: pd.DataFrame, temp_folder: str, batches_folder: s
             k = int(temp_name[-1])
 
     # Save initial k
-    with open("initial_k.txt", "w") as f:
+    with open("/projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_main/initial_k.txt", "w") as f:
         f.write(str(k))
 
     # Process each bucket and update chunking_folder

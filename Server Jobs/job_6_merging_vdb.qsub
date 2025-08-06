@@ -1,0 +1,15 @@
+#!/bin/bash -l
+
+#$ -P sachgrp
+#$ -N job_6_merging_vdb
+#$ -m bea
+#$ -pe omp 16
+
+export PYTHONUNBUFFERED=1
+
+module load miniconda
+conda activate sach2
+
+# Just change the state name and the country name in the input variable for this
+python3 "Python Scripts/job_6_merging_vdb.py"
+

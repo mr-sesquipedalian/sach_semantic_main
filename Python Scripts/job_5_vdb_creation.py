@@ -116,6 +116,8 @@ def main():
     current_datetime = datetime.now()
     datetime_string = current_datetime.strftime("%Y-%m-%d_%H")
     vectorstore.save_local(f"/projectnb/sachgrp/apgupta/Case Law Data/vector_databases/faiss_index_vdb_batch_{start_batch}_batch_{end_batch}_{datetime_string}")
+    with open ("/projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_main/latest_incremental.txt", "w") as f:
+        f.write(f"/projectnb/sachgrp/apgupta/Case Law Data/vector_databases/faiss_index_vdb_batch_{start_batch}_batch_{end_batch}_{datetime_string}")
     end_time = time.time()
     runtime = (end_time - start_time) / 3600
     print(f"All embeddings stored in a single FAISS vector database in {runtime} hours")
