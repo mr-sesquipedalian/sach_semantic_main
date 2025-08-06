@@ -1,6 +1,7 @@
 import faiss
 import pickle
 from langchain.docstore import InMemoryDocstore
+import os
 
 # Load the first FAISS index and metadata
 
