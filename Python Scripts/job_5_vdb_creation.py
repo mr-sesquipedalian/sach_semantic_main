@@ -32,7 +32,7 @@ def combine_pickle_files(folder_path):
         start_batch = int(f.read())
 
     start_batch += 1
-    end_batch = start_batch + 499
+    end_batch = start_batch + 799
 
     folder_path = "/projectnb/sachgrp/apgupta/Case Law Data/chunked_pickle_files"
     for filename in os.listdir(folder_path):
