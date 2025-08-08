@@ -11,5 +11,5 @@ module load miniconda
 conda activate /projectnb/sachgrp/apgupta/case_law_semantic_search_pipeline/sach_semantic_env
 
 # Just change the state name and the country name in the input variable for this
-python3 "Python Scripts/job_2_case_laws_metadata.py"  "/projectnb/sachgrp/prathamk/CaseLaw/USA/Washington/"
+python3 "Python Scripts/job_2_case_laws_metadata.py"  "/projectnb/sachgrp/prathamk/CaseLaw/USA/New York/"
 
