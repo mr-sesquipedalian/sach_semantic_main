@@ -196,4 +196,4 @@ if __name__ == "__main__":
     batches_folder = "/projectnb/sachgrp/apgupta/Case Law Data/chunking_batches"
     output_csv ="/projectnb/sachgrp/apgupta/Case Law Data/combined_cases_metadata.csv"  
 
-    process_and_chunk_pdfs(df, temp_folder, batches_folder, output_csv, bucket_num=500)
+    process_and_chunk_pdfs(df, temp_folder, batches_folder, output_csv, bucket_num=800) # Change this number as per cores
