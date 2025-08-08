@@ -4,7 +4,7 @@ import pickle
 from fastembed import TextEmbedding
 import os
 import torch
-from typing import List, cast
+from typing import List, cast 
 
 def setup_environment():
     cuda_ids = [int(i) for i in os.environ.get("CUDA_VISIBLE_DEVICES", "0").split(',')]
