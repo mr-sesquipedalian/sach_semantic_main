@@ -4,6 +4,7 @@
 #$ -N job_3_distributing_pdfs
 #$ -m bea
 #$ -pe omp 16
+#$ -l h_rt=60:00:00
 
 export PYTHONUNBUFFERED=1
 
