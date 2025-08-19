@@ -18,7 +18,7 @@ def download_new_data(data_csv, state_name):
 
         url = row["courtlistener_url"]
         case_name = url.rstrip("/").split("/")[-1]
-        filename = f"MA_new/{case_name}"
+        filename = f"{state_name}/{case_name}"
 
         try:
             print(f"⬇️ Downloading {url} -> {filename}")

@@ -1,0 +1,14 @@
+#!/bin/bash -l
+
+#$ -P sachgrp
+#$ -N download_new_cl_cases
+#$ -m bea
+#$ -pe omp 4
+
+export PYTHONUNBUFFERED=1
+
+module load miniconda
+conda activate sach2
+
+# Just change the state name and the country name in the input variable for this
+python3 new_cases.py "/projectnb/sachgrp/apgupta/Case Law Data/CL Data 2020 - 2025/csvs/MA_new_19082025.csv" "MA"   # for the csv file keep the format statecode_new_ddmmyyyy.csv
