@@ -4,6 +4,7 @@
 #$ -N job_2_case_laws_metadata
 #$ -m bea
 #$ -pe omp 16
+#$ -l buyin
 
 export PYTHONUNBUFFERED=1
 

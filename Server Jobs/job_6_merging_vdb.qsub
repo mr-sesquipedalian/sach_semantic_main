@@ -4,6 +4,7 @@
 #$ -N job_6_merging_vdb
 #$ -m bea
 #$ -pe omp 16
+#$ -l buyin
 
 export PYTHONUNBUFFERED=1
 

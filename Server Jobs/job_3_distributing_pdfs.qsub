@@ -5,7 +5,7 @@
 #$ -m bea
 #$ -pe omp 16
 #$ -l h_rt=60:00:00
-
+#$ -l buyin
 export PYTHONUNBUFFERED=1
 
 module load miniconda

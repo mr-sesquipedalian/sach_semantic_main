@@ -4,8 +4,6 @@ import pandas as pd
 import sys
 
 def download_new_data(data_csv, state_name):
-    #headers = {"Authorization": "Token bdda26a414d35d0f53ac36a26a60bed7c46f8c50"}  
-
     last_save_time = time.time()
     save_interval = 3600  # 1 hour in seconds
 
