@@ -4,6 +4,7 @@
 #$ -N download_new_cl_cases
 #$ -m bea
 #$ -pe omp 4
+#$ -l buyin
 
 export PYTHONUNBUFFERED=1
 

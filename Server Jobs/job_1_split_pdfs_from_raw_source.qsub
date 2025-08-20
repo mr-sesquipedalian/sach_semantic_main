@@ -4,6 +4,7 @@
 #$ -N job_1_split_pdf_from_raw_source
 #$ -m bea
 #$ -pe omp 16
+#$ -l buyin
 
 export PYTHONUNBUFFERED=1
 
